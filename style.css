@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 8px 15px;
+    background: #4a90a4;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    background: #3a7a8c;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "h h h"
+        "t c r"
+        "b c r"
+        "f f r";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    min-height: 100vh;
+}
+
+.header {
+    grid-area: h;
+    background: #4a90a4;
+    padding: 20px;
+    min-height: 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+.header .left-text {
+    color: #fff;
+    font-size: 20px;
+}
+
+.header .title-box {
+    background: #fff;
+    min-width: 250px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.left-top { 
+    grid-area: t; 
+    background: #f4d1ae;
+    padding: 10px; 
+}
+
+.left-top p{ 
+    text-align: left; 
+}
+
+.left-bottom { 
+    grid-area: b; 
+    background: #a8d5a8; 
+    padding: 10px; 
+}
+
+.left-bottom p {
+    text-align: left;
+}
+
+.center {
+    grid-area: c;
+    background: #fff; 
+    padding: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.center img {
+    max-width: 70%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.center p {
+    text-align: center;
+}
+
+.right { 
+    grid-area: r; 
+    background: #e6f3ff;
+    padding: 10px; 
+}
+
+.right p {
+    text-align: right;
+}
+
+.footer {
+    grid-area: f;
+    background: #87ceeb;
+    padding: 20px;
+    min-height: 80px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-items: space-between;
+}
+
+.footer .title-box {
+    background: #fff;
+    width: 330px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.footer .title-box h4 {
+    text-align: right;
+}
+
+.footer .right-text {
+    color: #bbff00;
+    justify-self: end;
+    text-align: right;
+    align-self: center;
+}
+
+h1 { margin: 5px 0; }
+p { 
+    text-align: justify; 
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-areas:
+            "h"
+            "t"
+            "c"
+            "b"
+            "r"
+            "f";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .center img {
+        max-width: 100%;
+    }
+    
+    .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer .title-box {
+        width: 100%;
+        justify-self: center;
+    }
+    
+    .footer .right-text {
+        justify-self: center;
+    }
+    
+    .right p {
+        text-align: justify;
+    }
+}
+
+/* === ДОДАТКОВІ СТИЛІ ДЛЯ АКОРДЕОНУ (Завдання 2d) === */
+
+/* Стилі для конструктора (admin.html) */
+.builder-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.builder-item input[type="text"],
+.builder-item textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box; /* Важливо для правильної ширини */
+}
+.builder-item textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Стилі для готового акордеону (viewer.html) */
+.accordion-item {
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+.accordion-header {
+    background-color: #f7f7f7;
+}
+.accordion-button {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #444;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.accordion-button:hover {
+    background-color: #eee;
+}
+.accordion-collapse {
+    /* (d) Це ключова логіка для JS-анімації */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.accordion-collapse.show {
+    /* (d) JS буде додавати/видаляти цей клас */
+    /* Висота має бути більшою за будь-який можливий контент */
+    max-height: 1000px; 
+    transition: max-height 0.4s ease-in;
+}
+.accordion-body {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+}
