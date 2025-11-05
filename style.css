@@ -212,43 +212,48 @@ p {
     resize: vertical;
 }
 
-/* Стилі для готового акордеону (viewer.html) */
+/* --- СТИЛІ ДЛЯ АКОРДЕОНУ --- */
+
+/* Контейнер для одного елемента (заголовок + вміст) */
 .accordion-item {
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     margin-bottom: 5px;
-    border-radius: 4px;
 }
+
+/* Кнопка-заголовок */
 .accordion-header {
-    background-color: #f7f7f7;
-}
-.accordion-button {
-    width: 100%;
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #444;
-    background: none;
-    border: none;
-    text-align: left;
+    background-color: #f4d1ae; /* Беру колір з вашого .left-top */
+    color: #333;
     cursor: pointer;
-    transition: background-color 0.2s;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
 }
-.accordion-button:hover {
-    background-color: #eee;
+
+/* Ефект при наведенні або коли секція активна */
+.accordion-header:hover,
+.accordion-header.active {
+    background-color: #e8c19e; /* Трохи темніший колір */
 }
-.accordion-collapse {
-    /* (d) Це ключова логіка для JS-анімації */
-    max-height: 0;
+
+/* Блок з вмістом (спочатку прихований) */
+.accordion-content {
+    padding: 0 15px; /* Горизонтальні відступи */
+    background-color: white;
+    
+    /* Магія анімації: */
+    max-height: 0; /* Стан "закрито" */
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out; /* Плавна анімація */
 }
-.accordion-collapse.show {
-    /* (d) JS буде додавати/видаляти цей клас */
-    /* Висота має бути більшою за будь-який можливий контент */
-    max-height: 1000px; 
-    transition: max-height 0.4s ease-in;
-}
-.accordion-body {
-    padding: 15px 20px;
-    border-top: 1px solid #ddd;
+
+/* Абзац <p> всередині блоку з вмістом */
+.accordion-content p {
+    text-align: left;
+    padding: 15px 0; /* Вертикальні відступи, коли відкрито */
+    font-size: 16px;
 }
