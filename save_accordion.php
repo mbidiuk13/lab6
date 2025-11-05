@@ -4,6 +4,7 @@ $jsonData = file_get_contents('php://input');
 
 if ($jsonData) {
     $filename = 'accordion.json';
+    @chmod($filename, 0666);
     
     if (file_put_contents($filename, $jsonData) !== false) {
         header('Content-Type: application/json');
