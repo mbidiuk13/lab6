@@ -191,9 +191,6 @@ p {
     }
 }
 
-/* === ДОДАТКОВІ СТИЛІ ДЛЯ АКОРДЕОНУ (Завдання 2d) === */
-
-/* Стилі для конструктора (admin.html) */
 .builder-item {
     margin-bottom: 15px;
     padding: 10px;
@@ -205,24 +202,20 @@ p {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
-    box-sizing: border-box; /* Важливо для правильної ширини */
+    box-sizing: border-box;
 }
 .builder-item textarea {
     min-height: 80px;
     resize: vertical;
 }
 
-/* --- СТИЛІ ДЛЯ АКОРДЕОНУ --- */
-
-/* Контейнер для одного елемента (заголовок + вміст) */
 .accordion-item {
     border-bottom: 1px solid #ddd;
     margin-bottom: 5px;
 }
 
-/* Кнопка-заголовок */
 .accordion-header {
-    background-color: #f4d1ae; /* Беру колір з вашого .left-top */
+    background-color: #f4d1ae;
     color: #333;
     cursor: pointer;
     padding: 15px;
@@ -234,26 +227,22 @@ p {
     transition: background-color 0.3s ease;
 }
 
-/* Ефект при наведенні або коли секція активна */
 .accordion-header:hover,
 .accordion-header.active {
-    background-color: #e8c19e; /* Трохи темніший колір */
+    background-color: #e8c19e;
 }
 
-/* Блок з вмістом (спочатку прихований) */
 .accordion-content {
-    padding: 0 15px; /* Горизонтальні відступи */
+    padding: 0 15px;
     background-color: white;
     
-    /* Магія анімації: */
-    max-height: 0; /* Стан "закрито" */
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out; /* Плавна анімація */
+    transition: max-height 0.3s ease-out;
 }
 
-/* Абзац <p> всередині блоку з вмістом */
 .accordion-content p {
     text-align: left;
-    padding: 15px 0; /* Вертикальні відступи, коли відкрито */
+    padding: 15px 0;
     font-size: 16px;
 }

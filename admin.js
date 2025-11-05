@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Отримуємо елементи з вашого HTML
     const builder = document.getElementById('accordion-builder');
-    const addBtn = document.getElementById('add-item-btn'); // Ваш ID
-    const saveBtn = document.getElementById('save-btn');     // Ваш ID
+    const addBtn = document.getElementById('add-item-btn');
+    const saveBtn = document.getElementById('save-btn');
     const saveStatus = document.getElementById('save-status');
 
     let sectionCount = 0;
 
-    // 1. Додавання нової секції
     addBtn.addEventListener('click', () => {
         sectionCount++;
         const sectionHTML = `
@@ -21,25 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         builder.insertAdjacentHTML('beforeend', sectionHTML);
     });
 
-    // 2. Видалення секції (через делегування подій)
     builder.addEventListener('click', (e) => {
         if (e.target.classList.contains('remove-section')) {
-            // .closest() знаходить найближчого батьківського елемента
             e.target.closest('.builder-section').remove();
         }
     });
 
-    // 3. Збереження акордеону
     saveBtn.addEventListener('click', async () => {
         const sections = [];
         const sectionElements = builder.querySelectorAll('.builder-section');
 
-        // Збираємо дані з усіх секцій
         sectionElements.forEach(el => {
             const title = el.querySelector('.section-title').value;
             const content = el.querySelector('.section-content').value;
             
-            // Додаємо, тільки якщо обидва поля заповнені
             if (title && content) { 
                 sections.push({ title, content });
             }
@@ -49,17 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
         saveStatus.style.color = 'blue';
 
         try {
-            // Відправляємо асинхронний запит на PHP скрипт
             const response = await fetch('save_accordion.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(sections) // Перетворюємо наш масив у JSON-рядок
+                body: JSON.stringify(sections)
             });
 
             if (response.ok) {
-                const result = await response.json(); // Отримуємо відповідь від PHP
+                const result = await response.json();
                 
                 if (result.status === 'success') {
                     saveStatus.textContent = 'Збережено успішно!';
